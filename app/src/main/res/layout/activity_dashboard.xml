@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.dashboard.DashboardActivity"
+    android:padding="16dp">
+
+    <!-- Botón para ver la lista de Pokémon -->
+    <Button
+        android:id="@+id/btnPokemonList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ver Lista de Pokémon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnSearchPokemon"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="32dp"
+        android:padding="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:textColor="?attr/colorPrimary" />
+
+    <!-- Botón para buscar Pokémon -->
+    <Button
+        android:id="@+id/btnSearchPokemon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Buscar Pokémon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnPokemonList"
+        android:padding="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:textColor="?attr/colorPrimary" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
