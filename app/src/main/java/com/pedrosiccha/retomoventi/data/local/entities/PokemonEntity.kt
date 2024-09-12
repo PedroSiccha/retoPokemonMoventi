@@ -14,10 +14,37 @@ data class PokemonEntity (
     val locations: String
 ) {
 
-    fun getTypes(): List<String> = Gson().fromJson(types, Array<String>::class.java).toList()
-    fun getAbilities(): List<String> = Gson().fromJson(abilities, Array<String>::class.java).toList()
-    fun getAttacks(): List<String> = Gson().fromJson(attacks, Array<String>::class.java).toList()
-    fun getLocations(): List<String> = Gson().fromJson(locations, Array<String>::class.java).toList()
+    fun parseTypes(): List<String> {
+        return if (types.isNullOrEmpty()) {
+            emptyList()
+        } else {
+            Gson().fromJson(types, Array<String>::class.java).toList()
+        }
+    }
+
+    fun parseAbilities(): List<String> {
+        return if (abilities.isNullOrEmpty()) {
+            emptyList()
+        } else {
+            Gson().fromJson(abilities, Array<String>::class.java).toList()
+        }
+    }
+
+    fun parseAttacks(): List<String> {
+        return if (attacks.isNullOrEmpty()) {
+            emptyList()
+        } else {
+            Gson().fromJson(attacks, Array<String>::class.java).toList()
+        }
+    }
+
+    fun parseLocations(): List<String> {
+        return if (locations.isNullOrEmpty()) {
+            emptyList()
+        } else {
+            Gson().fromJson(locations, Array<String>::class.java).toList()
+        }
+    }
 
     companion object {
         fun fromDomain(

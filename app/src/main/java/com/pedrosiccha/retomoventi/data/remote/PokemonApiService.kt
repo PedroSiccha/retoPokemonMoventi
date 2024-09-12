@@ -3,14 +3,15 @@ package com.pedrosiccha.retomoventi.data.remote
 import com.pedrosiccha.retomoventi.data.remote.response.EncounterLocationResponse
 import com.pedrosiccha.retomoventi.data.remote.response.EvolutionChainResponse
 import com.pedrosiccha.retomoventi.data.remote.response.PokemonDetailsResponse
+import com.pedrosiccha.retomoventi.data.remote.response.PokemonResponse
 import com.pedrosiccha.retomoventi.data.remote.response.PokemonSpeciesResponse
-import com.pedrosiccha.retomoventi.domain.model.Pokemon
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface PokemonApiService {
-    @GET("pokemon?limit=151")
-    suspend fun getAllPokemon(): List<Pokemon>
+    @GET("pokemon")
+    suspend fun getAllPokemon(@Query("limit") limit: Int): PokemonResponse
 
     @GET("pokemon/{id}")
     suspend fun getPokemonDetails(@Path("id") id: Int): PokemonDetailsResponse
