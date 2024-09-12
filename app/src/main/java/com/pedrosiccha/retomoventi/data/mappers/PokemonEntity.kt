@@ -7,9 +7,9 @@ fun PokemonEntity.toDomain(): Pokemon {
     return Pokemon(
         id = id,
         name = name,
-        types = getTypes(),
-        abilities = getAbilities(),
-        attacks = getAttacks(),
-        locations = getLocations()
+        types = parseTypes(),
+        abilities = parseAbilities(),
+        attacks = parseAttacks(),
+        locations = parseLocations()
     )
 }

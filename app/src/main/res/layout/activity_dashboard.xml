@@ -5,37 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.dashboard.DashboardActivity"
-    android:padding="16dp">
+    tools:context=".presentation.dashboard.DashboardActivity">
 
-    <!-- Botón para ver la lista de Pokémon -->
-    <Button
-        android:id="@+id/btnPokemonList"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Ver Lista de Pokémon"
+        android:layout_height="0dp"
+        app:navGraph="@navigation/nav_graph"
+        app:defaultNavHost="true"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnSearchPokemon"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="32dp"
-        android:padding="16dp"
-        android:background="?attr/selectableItemBackground"
-        android:textColor="?attr/colorPrimary" />
-
-    <!-- Botón para buscar Pokémon -->
-    <Button
-        android:id="@+id/btnSearchPokemon"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Buscar Pokémon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnPokemonList"
-        android:padding="16dp"
-        android:background="?attr/selectableItemBackground"
-        android:textColor="?attr/colorPrimary" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

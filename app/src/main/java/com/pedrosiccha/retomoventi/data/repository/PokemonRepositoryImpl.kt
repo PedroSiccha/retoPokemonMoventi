@@ -11,7 +11,6 @@ import com.pedrosiccha.retomoventi.domain.model.Pokemon
 import com.pedrosiccha.retomoventi.domain.model.PokemonEvolution
 import com.pedrosiccha.retomoventi.domain.repository.PokemonRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 
 class PokemonRepositoryImpl(
@@ -21,11 +20,13 @@ class PokemonRepositoryImpl(
 
     override suspend fun getAllPokemon(): List<Pokemon> {
         return withContext(Dispatchers.IO) {
-            val localPokemon = pokemonDao.getAllPokemon().first()
+            val localPokemon = pokemonDao.getAllPokemon()
+
             if (localPokemon.isEmpty()) {
-                val remotePokemon = apiService.getAllPokemon()
-                pokemonDao.insertPokemon(remotePokemon.map { it.toEntity() })
-                remotePokemon
+                val remotePokemonResponse = apiService.getAllPokemon(limit = 151)
+                val remotePokemonEntities = remotePokemonResponse.results.map { it.toEntity() }
+                pokemonDao.insertPokemon(remotePokemonEntities)
+                remotePokemonResponse.results.map { it.toDomain() }
             } else {
                 localPokemon.map { it.toDomain() }
             }
@@ -34,7 +35,7 @@ class PokemonRepositoryImpl(
 
     override suspend fun searchPokemonByName(name: String): List<Pokemon> {
         return withContext(Dispatchers.IO) {
-            val localSearchResults = pokemonDao.searchPokemonByName("%$name%").first()
+            val localSearchResults = pokemonDao.searchPokemonByName("%$name%")
             localSearchResults.map { it.toDomain() }
         }
     }

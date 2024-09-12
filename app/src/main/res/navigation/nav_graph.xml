@@ -2,27 +2,94 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/pokemonListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.pedrosiccha.retomoventi.presentation.splash.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/dashboardFragment"
+        android:name="com.pedrosiccha.retomoventi.presentation.dashboard.DashboardFragment"
+        tools:layout="@layout/fragment_dashboard">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_dashboardFragment_to_pokemonListFragment"
+            app:destination="@id/pokemonListFragment" />
+
+        <action
+            android:id="@+id/action_dashboardFragment_to_pokemonEvolutionsFragment"
+            app:destination="@id/pokemonEvolutionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_dashboardFragment_to_pokemonLocationsFragment"
+            app:destination="@id/pokemonEncounterLocationsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.pedrosiccha.retomoventi.presentation.splash.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/pokemonListFragment"
+        android:name="com.pedrosiccha.retomoventi.presentation.pokemonlist.PokemonListFragment"
+        tools:layout="@layout/fragment_pokemon_list">
+        <action
+            android:id="@+id/action_pokemonListFragment_to_pokemonDetailFragment"
+            app:destination="@id/pokemonDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pokemonDetailFragment"
+        android:name="com.pedrosiccha.retomoventi.presentation.pokemondetail.PokemonDetailFragment"
+        tools:layout="@layout/fragment_pokemon_detail">
+        <argument
+            android:name="pokemonId"
+            app:argType="integer" />
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_pokemonDetailFragment_to_pokemonEvolutionsFragment"
+            app:destination="@id/pokemonEvolutionsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="pokemonId"
+                app:argType="integer"
+                android:defaultValue="0" />
+        </action>
+
+        <action
+            android:id="@+id/action_pokemonDetailFragment_to_pokemonEncounterLocationsFragment"
+            app:destination="@id/pokemonEncounterLocationsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+            <argument
+                android:name="pokemonId"
+                app:argType="integer"
+                android:defaultValue="0" />
+        </action>
     </fragment>
+
+    <fragment
+        android:id="@+id/pokemonEvolutionsFragment"
+        android:name="com.pedrosiccha.retomoventi.presentation.pokemonevolution.PokemonEvolutionsFragment"
+        tools:layout="@layout/fragment_pokemon_evolutions">
+        <argument
+            android:name="pokemonId"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pokemonEncounterLocationsFragment"
+        android:name="com.pedrosiccha.retomoventi.presentation.pokemonencounterlocations.PokemonEncounterLocationsFragment"
+        tools:layout="@layout/fragment_pokemon_encounter_locations">
+        <argument
+            android:name="pokemonId"
+            app:argType="integer" />
+    </fragment>
+
 </navigation>
