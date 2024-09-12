@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="@dimen/dim_16dp">
 
     <TextView
         android:id="@+id/location_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp" />
+        android:textSize="@dimen/dim_16sp" />
 </LinearLayout>

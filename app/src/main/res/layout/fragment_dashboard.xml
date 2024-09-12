@@ -4,25 +4,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="16dp">
+    android:padding="@dimen/dim_16dp">
 
     <Button
         android:id="@+id/btnPokemonList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver Lista de Pokémon"
-        android:layout_marginTop="32dp" />
+        android:text="@string/view_list_pokemon"
+        android:layout_marginTop="@dimen/dim_32dp" />
 
     <Button
         android:id="@+id/btnPokemonEvolutions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Evoluciones de Pokémon" />
+        android:text="@string/evolution_pokemon" />
 
     <Button
         android:id="@+id/btnPokemonLocations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lugares de encuentro de Pokémon" />
+        android:text="@string/location_encountre_pokemon" />
 
 </LinearLayout>

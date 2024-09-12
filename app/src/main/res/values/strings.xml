@@ -42,4 +42,9 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="view_list_pokemon">Ver Lista de Pokémon</string>
+    <string name="evolution_pokemon">Evoluciones de Pokémon</string>
+    <string name="location_encountre_pokemon">Lugares de encuentro de Pokémon</string>
+    <string name="evolution_name">Nombre de Evolución</string>
+    <string name="name_pokemon">Nombre del Pokémon</string>
 </resources>
