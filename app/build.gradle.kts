@@ -1,8 +1,7 @@
-// Archivo build.gradle.kts en el módulo 'app'
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs.kotlin")
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
 }
@@ -39,7 +38,9 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
+
 }
 
 dependencies {
@@ -50,7 +51,9 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.activity:activity-ktx:1.9.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.fragment:fragment-ktx:1.5.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
     // Retrofit y OkHttp
@@ -60,9 +63,10 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
 
     // Room para base de datos
-    implementation("androidx.room:room-runtime:2.5.0")
+    implementation("androidx.room:room-runtime:2.6.1")
     implementation(libs.androidx.activity)
-    kapt("androidx.room:room-compiler:2.5.0")
+    kapt("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
 
     // Hilt para inyección de dependencias
     implementation("com.google.dagger:hilt-android:2.48")

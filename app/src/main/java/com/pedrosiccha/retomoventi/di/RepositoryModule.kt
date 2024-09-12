@@ -16,6 +16,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -50,7 +51,7 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun providePokemonDatabase(context: Context): PokemonDatabase {
+    fun providePokemonDatabase(@ApplicationContext context: Context): PokemonDatabase {
         return Room.databaseBuilder(
             context.applicationContext,
             PokemonDatabase::class.java,
