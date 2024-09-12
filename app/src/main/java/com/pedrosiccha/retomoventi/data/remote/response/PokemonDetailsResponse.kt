@@ -6,5 +6,6 @@ data class PokemonDetailsResponse (
     val types: List<TypeResponse>,
     val abilities: List<AbilityResponse>,
     val moves: List<MoveResponse>,
-    val location_area_encounters: String // Este es el endpoint para obtener los lugares donde se puede encontrar al Pokémon
+    val stats: List<StatResponse>,
+    val location_area_encounters: String
 )

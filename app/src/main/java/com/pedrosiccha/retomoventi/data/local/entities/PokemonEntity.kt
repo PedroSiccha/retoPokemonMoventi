@@ -8,18 +8,17 @@ import com.google.gson.Gson
 data class PokemonEntity (
     @PrimaryKey val id: Int,
     val name: String,
-    val types: String,      // Almacenamos la lista como JSON
-    val abilities: String,  // Almacenamos la lista como JSON
-    val attacks: String,    // Almacenamos la lista como JSON
-    val locations: String   // Almacenamos la lista como JSON
+    val types: String,
+    val abilities: String,
+    val attacks: String,
+    val locations: String
 ) {
-    // Métodos auxiliares para convertir las cadenas JSON a Listas
+
     fun getTypes(): List<String> = Gson().fromJson(types, Array<String>::class.java).toList()
     fun getAbilities(): List<String> = Gson().fromJson(abilities, Array<String>::class.java).toList()
     fun getAttacks(): List<String> = Gson().fromJson(attacks, Array<String>::class.java).toList()
     fun getLocations(): List<String> = Gson().fromJson(locations, Array<String>::class.java).toList()
 
-    // Funciones para convertir listas a JSON cuando insertamos datos
     companion object {
         fun fromDomain(
             id: Int,

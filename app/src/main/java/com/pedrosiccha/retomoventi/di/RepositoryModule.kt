@@ -21,16 +21,14 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
-    // Proveer el interceptor de logging para monitorear los request y response
     @Provides
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY // Puedes cambiar el nivel a BASIC o HEADERS si prefieres menos detalle
+            level = HttpLoggingInterceptor.Level.BODY
         }
     }
 
-    // Proveer OkHttpClient con el interceptor de logging
     @Provides
     @Singleton
     fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
@@ -39,19 +37,17 @@ object RepositoryModule {
             .build()
     }
 
-    // Proveer instancia de Retrofit para interactuar con la API de Pokémon
     @Provides
     @Singleton
     fun providePokemonApiService(okHttpClient: OkHttpClient): PokemonApiService {
         return Retrofit.Builder()
             .baseUrl("https://pokeapi.co/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)  // Usa OkHttpClient con el interceptor
+            .client(okHttpClient)
             .build()
             .create(PokemonApiService::class.java)
     }
 
-    // Proveer instancia de la base de datos local (Room)
     @Provides
     @Singleton
     fun providePokemonDatabase(context: Context): PokemonDatabase {
@@ -62,14 +58,12 @@ object RepositoryModule {
         ).build()
     }
 
-    // Proveer instancia del DAO de Pokémon para acceder a la base de datos local
     @Provides
     @Singleton
     fun providePokemonDao(pokemonDatabase: PokemonDatabase): PokemonDao {
         return pokemonDatabase.pokemonDao()
     }
 
-    // Proveer el repositorio de Pokémon usando la API y el DAO
     @Provides
     @Singleton
     fun providePokemonRepository(
