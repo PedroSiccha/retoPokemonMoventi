@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="16dp">
+    android:padding="@dimen/dim_16dp">
 
     <TextView
         android:id="@+id/pokemon_name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre del Pokémon"
-        android:textSize="18sp" />
+        android:text="@string/name_pokemon"
+        android:textSize="@dimen/dim_18sp" />
 
 </LinearLayout>
